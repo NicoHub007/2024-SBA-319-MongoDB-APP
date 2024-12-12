@@ -14,7 +14,7 @@ class Show extends React.Component {
                         <div className="details">
                             <h1>{drink.name}</h1>
                             <ul>
-                                <li>Color: {drink.type}</li>
+                                <li>Color: {drink.color}</li>
                                 <li>Caffeine: {drink.caffeine ? "Yes" : "No"}</li>
                             </ul>
                         </div>

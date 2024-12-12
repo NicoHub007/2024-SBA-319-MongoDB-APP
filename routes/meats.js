@@ -161,7 +161,7 @@ router.delete('/:id', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const foundMeat = await Meat.findById(req.params.id);
-        res.render('vegetables/Show', { meat: foundMeat });
+        res.render('meats/Show', { meat: foundMeat });
     } catch (err) {
         res.status(400).send(err);
     }
