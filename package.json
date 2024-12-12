@@ -1,0 +1,36 @@
+{
+  "name": "2024-sba-319-mongodb-database-application",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-handlebars": "^8.0.1",
+    "fs": "^0.0.1-security",
+    "jsx": "^0.9.89",
+    "jsx-view-engine": "^1.0.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.8.4",
+    "path": "^0.12.7",
+    "sharp": "^0.33.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NicoHub007/2024-SBA-319-MongoDB-APP.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NicoHub007/2024-SBA-319-MongoDB-APP/issues"
+  },
+  "homepage": "https://github.com/NicoHub007/2024-SBA-319-MongoDB-APP#readme",
+  "description": ""
+}
