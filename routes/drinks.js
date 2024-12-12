@@ -170,7 +170,7 @@ router.get('/:id/Edit', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const foundDrink = await Drink.findById(req.params.id);
-        res.json(foundFruit).status(200);
+        res.render('vegetables/Show', { drink: foundDrink });
     } catch (err) {
         res.status(400).send(err);
     }

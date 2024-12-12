@@ -13,14 +13,14 @@ class Index extends React.Component {
                     <a href="/api/drinks/new" className="add-button">Add New Drink</a>
                 </div>
                 <ul className="list">
-                    {drinks.map((drink, index) => (
-                        <li key={index}>
+                    {drinks.map((drink) => (
+                        <li key={drink._id}>
                             <img src={drink.image} alt={drink.name} />
                             <h2>{drink.name}</h2>
                             <nav>
-                                <a href={`/api/drinks/${index}`}>Details</a>
-                                <a href={`/api/drinks/${index}/edit/`}>Edit</a>
-                                <form action={`/api/drinks/${Index}?_method=DELETE`} method="POST">
+                                <a href={`/api/drinks/${drink._id}`}>Details</a>
+                                <a href={`/api/drinks/${drink.id}/edit/`}>Edit</a>
+                                <form action={`/api/drinks/${drink.id}?_method=DELETE`} method="POST">
                                     <input type="submit" value="DELETE" />
                                 </form>
                             </nav>

@@ -43,7 +43,7 @@ const Vegetable = require('../models/vegetables');
 //     }
 // });
 
-// Index
+//Index
 // router.get('/', async (req, res) => {
 //     try {
 //         const vegetables = await Vegetable.find({});
@@ -56,10 +56,10 @@ const Vegetable = require('../models/vegetables');
 // Index Route - GET all vegetables
 router.get('/', async (req, res) => {
     try {
-        const vegetables = await Meat.find(); // Fetch drinks from MongoDB
-        res.render('drinks/index', { vegetables }); // Render drinks/index view
+        const vegetables = await Vegetable.find(); // Fetch drinks from MongoDB
+        res.render('vegetables/index', { vegetables }); // Render drinks/index view
     } catch (error) {
-        console.error("Error fetching drinks:", error);
+        console.error("Error fetching vegetables:", error);
         res.status(500).send("Internal Server Error");
     }
 });
@@ -113,10 +113,11 @@ router.delete('/:id', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const foundVegetable = await Vegetable.findById(req.params.id);
-        res.status(200).json(foundVegetable);
+        res.render('vegetables/Show', { vegetable: foundVegetable }); 
     } catch (err) {
         res.status(400).send(err);
     }
 });
+
 
 module.exports = router;

@@ -104,9 +104,9 @@ const Meat = require('../models/meats');
 router.get('/', async (req, res) => {
     try {
         const meats = await Meat.find(); // Fetch drinks from MongoDB
-        res.render('drinks/index', { meats }); // Render drinks/index view
+        res.render('meats/index', { meats }); // Render drinks/index view
     } catch (error) {
-        console.error("Error fetching drinks:", error);
+        console.error("Error fetching meats:", error);
         res.status(500).send("Internal Server Error");
     }
 });
@@ -139,7 +139,8 @@ router.get('/:id/edit', async (req, res) => {
 // Update
 router.put('/:id', async (req, res) => {
     try {
-        const updatedMeat = await Meat.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        const updatedMeat = await Meat.findByIdAndUpdate(
+            req.params.id, req.body, { new: true });
         res.redirect(`/api/meats/${req.params.id}`);
     } catch (err) {
         res.status(400).send(err);
@@ -160,7 +161,7 @@ router.delete('/:id', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const foundMeat = await Meat.findById(req.params.id);
-        res.status(200).json(foundMeat);
+        res.render('vegetables/Show', { meat: foundMeat });
     } catch (err) {
         res.status(400).send(err);
     }

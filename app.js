@@ -87,8 +87,7 @@ app.use('/api/meats', meatRoutes);
 app.use('/api/vegetables', vegetableRoutes);
 app.use('/api/drinks', drinksRoutes);
 
-// ***** BELOW HERE are NON-API routes
-// Index - GET
+//Index - GET
 app.get('/vegetables', async (req, res) => {
     try {
         const foundVegetables = await Vegetable.find({});
