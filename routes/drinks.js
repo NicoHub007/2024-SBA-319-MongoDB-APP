@@ -2,52 +2,99 @@ const express = require('express');
 const router = express.Router();
 const Drink = require('../models/drinks');
 
-// add a seed route to your routes
-router.get('/seed', async (req, res) => {
-    try {
-        await Drink.create([
-            {
-                name: 'coffee',
-                color: 'dark-brown',
-                image: '/images/drinks/coffee.jpg',
-                caffeine: false,
-            },
-            {
-                name: 'cocoa',
-                color: 'brown',
-                image: '/images/drinks/cocoa.jpg',
-                caffeine: true,
-            },
-            {
-                name: 'water',
-                color: 'clear',
-                image: '/images/drinks/water.jpg',
-                caffeine: false
-            },
+// // add a seed route to your routes
+// router.get('/seed', async (req, res) => {
+//     try {
+//         await Drink.create([
+//             {
+//                 name: 'coffee',
+//                 color: 'dark-brown',
+//                 image: '/images/drinks/coffee.jpg',
+//                 caffeine: false,
+//             },
+//             {
+//                 name: 'cocoa',
+//                 color: 'brown',
+//                 image: '/images/drinks/cocoa.jpg',
+//                 caffeine: true,
+//             },
+//             {
+//                 name: 'water',
+//                 color: 'clear',
+//                 image: '/images/drinks/water.jpg',
+//                 caffeine: false
+//             },
+//             {
+//                 name: 'mellow yellow',
+//                 color: 'yellow',
+//                 image: '/images/drinks/melyel.jpg',
+//                 caffeine: true,
+//             },
+//             {
+//                 name: 'tomato juice',
+//                 color: 'orange',
+//                 image: '/images/drinks/tomato-juice.jpg',
+//                 caffeine: false,
+//             },
+//             {
+//                 name: 'lemonade',
+//                 color: 'yellow',
+//                 image: '/images/drinks/lemonade.jpg',
+//                 caffeine: false,
+//             },
+//             {
+//                 name: 'sprite',
+//                 color: 'clear',
+//                 image: '/images/drinks/sprite.jpg',
+//                 caffeine: true,
+//             },
+//             {
+//                 name: 'energy drinks',
+//                 color: 'blue',
+//                 image: '/images/drinks/energy-drinks.jpg',
+//                 caffeine: true,
+//             },
+//             {
+//                 name: 'green tea',
+//                 color: 'light-brown',
+//                 image: '/images/drinks/green-tea.jpg',
+//                 caffeine: false,
+//             },
+//             {
+//                 name: 'kombucha',
+//                 color: 'brown',
+//                 image: '/images/drinks/kombucha.jpg',
+//                 caffeine: true,
+//             },
+//             {
+//                 name: 'peach lemonade',
+//                 color: 'yellow',
+//                 image: '/images/drinks/peach-lemonade.jpg',
+//                 caffeine: false,
+//             }
+//         ])
+//         res.status(200).redirect('/api/drinks');
+//     } catch (err) {
+//         res.status(400).send(err);
+//     }
+// })
 
-        ])
-        res.status(200).redirect('/api/drinks');
-    } catch (err) {
-        res.status(400).send(err);
-    }
-})
+// //===== Route for getting all meats ======
 
-//===== Route for getting all meats ======
-
-// INDEX
-router.get('/', async (req, res) => {
-    try {
-        const foundDrinks = await Drink.find({});
-        res.status(200).json(foundDrinks);
-    } catch (err) {
-        res.status(400).send(err);
-    }
-})
+// // INDEX
+// router.get('/', async (req, res) => {
+//     try {
+//         const foundDrinks = await Drink.find({});
+//         res.status(200).json(foundDrinks);
+//     } catch (err) {
+//         res.status(400).send(err);
+//     }
+// })
 // Index Route - GET all drinks
 router.get('/', async (req, res) => {
     try {
         const drinks = await Drink.find(); // Fetch drinks from MongoDB
-        res.render('drinks/index', { drinks }); // Render drinks/index view
+        res.render('drinks/index', { drinks}); // Render drinks/index view
     } catch (error) {
         console.error("Error fetching drinks:", error);
         res.status(500).send("Internal Server Error");

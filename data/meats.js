@@ -40,6 +40,41 @@ const meats = [
         quality: 'select',
         image: '/images/meats/duckwing.jpg',
         isItFresh: true,
+    },
+    {
+        name: 'shrimp',
+        cut: 'punch',
+        quality: 'choice',
+        image: '/images/meats/shrimp.jpg',
+        isItFresh: true,
+    },
+    {
+        name: 'tilapia',
+        cut: 'fillet',
+        quality: 'choice',
+        image: '/images/meats/fillet-tilapia.jpg',
+        isItFresh: true,
+    },
+    {
+        name: 'salmon',
+        cut: 'fillet',
+        quality: 'choice',
+        image: '/images/meats/fillet-salmon.jpg',
+        isItFresh: true,
+    },
+    {
+        name: 'tuna',
+        cut: 'fillet',
+        quality: 'choice',
+        image: '/images/meats/fillet-tuna.jpg',
+        isItFresh: true,
+    },
+    {
+        name: 'polish sausage',
+        cut: 'ground',
+        quality: 'choice',
+        image: '/images/meats/polish-sausage.jpg',
+        isItFresh: false,
     }
 ]
 

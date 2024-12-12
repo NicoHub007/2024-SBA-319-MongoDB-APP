@@ -116,20 +116,6 @@ app.get('/meats', async (req, res) => {
     }
 })
 
-// ***** ABOVE HERE are NON-API routes
-
-// app.get('/meats', (req, res) => {
-//     res.json(meats);
-// })
-
-// app.get('/vegetables', (req, res) => {
-//    res.json(vegetables);
-// })
-
-// app.get('/drinks', (req, res) => {
-//     res.json(drinks);
-// });
-
 // N - NEW - GET  - *  CREATE * but this is a view that allows user inputs
 app.get('/meats/new', (req, res) => {
     res.render('meats/New');

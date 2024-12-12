@@ -1,102 +1,168 @@
 const express = require('express');
 const router = express.Router();
-const Meat = require('../data/meats');
+const Meat = require('../models/meats');
 
-//===== Route for getting all meats ======
+// // Seed route
+// router.get('/seed', async (req, res) => {
+//     try {
+//         await Meat.create([
+//             {
+//                 name: 'chicken',
+//                 cut: 'whole',
+//                 quality: 'choice',
+//                 image: '/images/meats/wholechicken.jpg',
+//                 isItFresh: false,
+//             },
+//             {
+//                 name: 'beef',
+//                 cut: 'chuck',
+//                 quality: 'prime',
+//                 image: '/images/meats/beefchuck.jpg',
+//                 isItFresh: true,
+//             },
+//             {
+//                 name: 'lamb',
+//                 cut: 'rib chop',
+//                 quality: 'choice',
+//                 image: '/images/meats/lamb.jpg',
+//                 isItFresh: false
+//             },
+//             {
+//                 name: 'pork',
+//                 cut: 'back rib',
+//                 quality: 'select',
+//                 image: '/images/meats/porkrib.jpg',
+//                 isItFresh: true,
+//             },
+//             {
+//                 name: 'turkey',
+//                 cut: 'breast',
+//                 quality: 'choice',
+//                 image: '/images/meats/turkeybreast.jpg',
+//                 isItFresh: false,
+//             },
+//             {
+//                 name: 'duck',
+//                 cut: 'wings',
+//                 quality: 'select',
+//                 image: '/images/meats/duckwing.jpg',
+//                 isItFresh: true,
+//             },
+//             {
+//                 name: 'shrimp',
+//                 cut: 'punch',
+//                 quality: 'choice',
+//                 image: '/images/meats/shrimp.jpg',
+//                 isItFresh: true,
+//             },
+//             {
+//                 name: 'tilapia',
+//                 cut: 'fillet',
+//                 quality: 'choice',
+//                 image: '/images/meats/fillet-tilapia.jpg',
+//                 isItFresh: true,
+//             },
+//             {
+//                 name: 'salmon',
+//                 cut: 'fillet',
+//                 quality: 'choice',
+//                 image: '/images/meats/fillet-salmon.jpg',
+//                 isItFresh: true,
+//             },
+//             {
+//                 name: 'tuna',
+//                 cut: 'fillet',
+//                 quality: 'choice',
+//                 image: '/images/meats/fillet-tuna.jpg',
+//                 isItFresh: true,
+//             },
+//             {
+//                 name: 'polish sausage',
+//                 cut: 'ground',
+//                 quality: 'choice',
+//                 image: '/images/meats/polish-sausage.jpg',
+//                 isItFresh: false,
+//             }
+//         ]);
+//         res.status(200).redirect('/api/meats');
+//     } catch (err) {
+//         res.status(400).send(err);
+//     }
+// });
 
-// INDEX
-// this is called an index route, where you can see all of the data
-// THIS is one version of READ
-// READ many
-// this is only practical when you have small amounts of data
-// but you you can also use an index route and limit the number of responses
+// // Index
+// router.get('/', async (req, res) => {
+//     try {
+//         const meats = await Meat.find({});
+//         res.status(200).json(meats);
+//     } catch (err) {
+//         res.status(400).send(err);
+//     }
+// });
 
-router.get('/', (req, res) => {
-    res.render('meats/index', { meats: Meat });
-})
-
-//N - NEW - allows a user to input a new meat
-router.get('/new', (req, res) => {
-    // the 'meats/New' in the render needs to be pointing to something in my views folder
-    res.render('meats/New');
-})
-
-// DELETE
-router.delete('/:id', (req, res) => {
-    if (req.params.id >= 0 && req.params.id < Meat.length) {
-        Meat.splice(req.params.id, 1);
-        res.json(Meat);
-    } else {
-        res.send('<p>That is not a valid id</p>')
-    }
-})
-
-// UPDATE
-// put replaces a resource
-router.put('/:id', (req, res) => {
-    if (req.params.id >= 0 && req.params.id < Meat.length) {
-        // put takes the request body and replaces the entire database entry with it
-        // find the id and replace the entire thing with the req.body
-        if (req.body.isItFresh === 'on') { // if checked, req.body.isItFresh is set to 'on'
-            req.body.isItFresh = true;
-        } else { // if not checked, req.body.isItFresh is undefined
-            req.body.isItFresh = false;
-        }
-        Meat[req.params.id] = req.body;
-        res.json(Meat[req.params.id]);
-    } else {
-        res.send('<p>That is not a valid id</p>')
-    }
-
-})
-
-// patch updates part of it
-router.patch('/:id', (req, res) => {
-    if (req.params.id >= 0 && req.params.id < Meat.length) {
-        // find the id and replace only the new properties
-        console.log(Meat[req.params.id]);
-        console.log(req.body)
-        const newMeat = { ...Meat[req.params.id], ...req.body }
-        Meat[req.params.id] = newMeat;
-        res.json(Meat[req.params.id]);
-    } else {
-        res.send('<p>That is not a valid id</p>')
-    }
-})
-
-// CREATE
-router.post('/', (req, res) => {
-    console.log(req.body)
-    // you should check this when you first start, but then get rid of this console.log
-    // console.log(req.body);
-    // need to add logic to change the check or not checked to true or false
-    if (req.body.isItFresh === 'on') { // if checked, req.body.isItFresh is set to 'on'
-        req.body.isItFresh = true;
-    } else { // if not checked, req.body.isItFresh is undefined
-        req.body.isItFresh = false;
-    }
-    Meat.push(req.body)
-    // res.send('this was the post route');
-    res.json(Meat);
-})
-
-// EDIT
-router.get('/:id/Edit', (req, res) => {
-    const id = req.params.id;
-    if (id >= 0 && id < Meat.length) {
-        res.render('meats/Edit', { meat: Meat[id], id });
-    } else {
-        res.status(404).send('<p>That is not a valid id</p>');
+// Index Route - GET all meats
+router.get('/', async (req, res) => {
+    try {
+        const meats = await Meat.find(); // Fetch drinks from MongoDB
+        res.render('drinks/index', { meats }); // Render drinks/index view
+    } catch (error) {
+        console.error("Error fetching drinks:", error);
+        res.status(500).send("Internal Server Error");
     }
 });
 
-// SHOW
-router.get('/:id', (req, res) => {
-    const id = req.params.id;
-    if (id >= 0 && id < Meat.length) {
-        res.render('meats/Show', { meat: Meat[id], id });
-    } else {
-        res.status(404).send('<p>That is not a valid id</p>');
+// New
+router.get('/new', (req, res) => {
+    res.render('meats/New');
+});
+
+// Create
+router.post('/', async (req, res) => {
+    try {
+        const createdMeat = await Meat.create(req.body);
+        res.status(200).redirect('/api/meats');
+    } catch (err) {
+        res.status(400).send(err);
+    }
+});
+
+// Edit
+router.get('/:id/edit', async (req, res) => {
+    try {
+        const foundMeat = await Meat.findById(req.params.id);
+        res.render('meats/Edit', { meat: foundMeat });
+    } catch (err) {
+        res.status(400).send(err);
+    }
+});
+
+// Update
+router.put('/:id', async (req, res) => {
+    try {
+        const updatedMeat = await Meat.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        res.redirect(`/api/meats/${req.params.id}`);
+    } catch (err) {
+        res.status(400).send(err);
+    }
+});
+
+// Delete
+router.delete('/:id', async (req, res) => {
+    try {
+        await Meat.findByIdAndDelete(req.params.id);
+        res.status(200).redirect('/api/meats');
+    } catch (err) {
+        res.status(400).send(err);
+    }
+});
+
+// Show
+router.get('/:id', async (req, res) => {
+    try {
+        const foundMeat = await Meat.findById(req.params.id);
+        res.status(200).json(foundMeat);
+    } catch (err) {
+        res.status(400).send(err);
     }
 });
 
