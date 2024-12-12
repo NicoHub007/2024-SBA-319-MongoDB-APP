@@ -20,7 +20,7 @@ class Index extends React.Component {
                             <nav>
                                 <a href={`/api/meats/${meat._id}`}>Details</a>
                                 <a href={`/api/meats/${meat._id}/edit/`}>Edit</a>
-                                <form action={`/api/meats/${meat_id}?_method=DELETE`} method="POST">
+                                <form action={`/api/meats/${meat._id}?_method=DELETE`} method="POST">
                                     <input type="submit" value="DELETE" />
                                 </form>
                             </nav>
