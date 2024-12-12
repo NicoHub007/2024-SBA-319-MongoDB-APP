@@ -19,8 +19,8 @@ class Index extends React.Component {
                             <h2>{drink.name}</h2>
                             <nav>
                                 <a href={`/api/drinks/${drink._id}`}>Details</a>
-                                <a href={`/api/drinks/${drink.id}/edit/`}>Edit</a>
-                                <form action={`/api/drinks/${drink.id}?_method=DELETE`} method="POST">
+                                <a href={`/api/drinks/${drink._id}/edit/`}>Edit</a>
+                                <form action={`/api/drinks/${drink._id}?_method=DELETE`} method="POST">
                                     <input type="submit" value="DELETE" />
                                 </form>
                             </nav>
