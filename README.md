@@ -1,10 +1,10 @@
 G!M | Grilling Inventory Management System
 
-This application is a Node.js-based inventory management system for tracking meats, vegetables, and drinks. It provides RESTful routes for CRUD operations, uses JSX for views, and has a robust middleware setup for handling static files and data processing.
+This application is a Node.js-based inventory management system for tracking meats, vegetables, and drinks. It provides routes for CRUD operations, uses JSX for views, and has a robust middleware setup for handling static files and data processing.
 
 Features
 
-RESTful API routes for managing inventory (meats, vegetables, drinks)
+API routes for managing inventory (meats, vegetables, drinks)
 
 JSX-based view rendering for dynamic web pages
 
