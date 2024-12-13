@@ -10,7 +10,9 @@ class DefaultLayout extends React.Component {
                 </head>
                 <body>
                     <header>
-                        <h1>G!M | Grilling Inventory Manager</h1>
+                        <h1>
+                            <a href="/">G!M</a> | Grilling Inventory Manager
+                        </h1>
                         <nav>
                             <a href="/api/meats">Meats</a><a href="/api/vegetables">Vegetables</a><a href="/api/drinks">Drinks</a> 
                         </nav>
@@ -18,7 +20,7 @@ class DefaultLayout extends React.Component {
                     <main>
                         {this.props.children}
                     </main>
-                    <footer className="footer">
+                    <footer>
                         <p>&copy; 2025 Grilling Inventory Manager | G!M</p>
                     </footer>
                 </body>

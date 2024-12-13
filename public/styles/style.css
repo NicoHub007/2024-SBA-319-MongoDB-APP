@@ -3,10 +3,10 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    background-color: #f9f9f9;
+    background-color:linear-gradient(135deg, #3993b4, #4ccae7);
 }
 
-header {
+/* header {
     background: #333;
     color: #fff;
     padding: 10px 20px;
@@ -15,6 +15,33 @@ header {
 
 header h1 {
     margin: 0;
+} */
+
+header {
+    width: auto;
+    padding: 20px;
+    background-color: #0776bc;
+    border: 2px solid #39a8ed;
+    border-radius: 0 0 15px 15px;
+    text-align: center;
+    color: white;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+footer {
+    width: auto;
+    padding: 15px;
+    background-color: #0776bc;
+    border: 2px solid #39a8ed;
+    border-radius: 15px 15px 0 0;
+    text-align: center;
+    color: white;
+    margin-top: auto;
+    /* Pushes footer to the bottom */
 }
 
 .add-container {
@@ -80,7 +107,7 @@ h2 {
 }
 
 .actions a {
-    background: #007bff;
+    background: #0776bc;
     color: #fff;
     padding: 8px 12px;
     text-decoration: none;
@@ -90,11 +117,11 @@ h2 {
 }
 
 .actions a:hover {
-    background: #0056b3;
+    background: #39a8ed;
 }
 
 form input[type="submit"] {
-    background: #ff4d4d;
+    background: #400202;
     border: none;
     color: #fff;
     padding: 8px 12px;
@@ -104,7 +131,7 @@ form input[type="submit"] {
 }
 
 form input[type="submit"]:hover {
-    background: #e60000;
+    background: #400202;
 }
 
 nav a {
@@ -113,7 +140,7 @@ nav a {
     margin: 5px;
     text-decoration: none;
     color: white;
-    background-color: #007BFF;
+    background-color: #0776bc;
     border: none;
     border-radius: 5px;
     font-family: Arial, sans-serif;
@@ -121,18 +148,20 @@ nav a {
 }
 
 nav a:hover {
-    background-color: #0056b3;
+    background-color: #39a8ed;
     transform: scale(1.05);
     color: white;
 }
-
+/* 
 .footer p{
     text-align: center;
     padding: 10px;
     color: #888;
     font-size: 14px;
     margin-top: 20px;
-}
+    position:fixed;
+    bottom:auto;
+} */
 
 
 /********* For the Show Views ********/

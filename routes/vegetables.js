@@ -2,57 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Vegetable = require('../models/vegetables');
 
-// // Seed route
-// router.get('/seed', async (req, res) => {
-//     try {
-//         await Vegetable.create([
-//             {
-//                 name: 'cauliflower',
-//                 color: 'white',
-//                 image: '/images/vegetables/cauliflower.jpg',
-//                 isItFresh: false,
-//             },
-//             {
-//                 name: 'collard greens',
-//                 color: 'yellow',
-//                 image: '/images/vegetables/collard.jpg',
-//                 isItFresh: true,
-//             },
-//             {
-//                 name: 'broccoli',
-//                 color: 'green',
-//                 image: '/images/vegetables/broccoli.jpg',
-//                 isItFresh: false
-//             },
-//             {
-//                 name: 'carrots',
-//                 color: 'orange',
-//                 image: '/images/vegetables/carrots.jpg',
-//                 isItFresh: false,
-//             },
-//             {
-//                 name: 'beetroots',
-//                 color: 'red',
-//                 image: '/images/vegetables/beetroot.jpg',
-//                 isItFresh: false,
-//             },
-//         ]);
-//         res.status(200).redirect('/api/vegetables');
-//     } catch (err) {
-//         res.status(400).send(err);
-//     }
-// });
-
-//Index
-// router.get('/', async (req, res) => {
-//     try {
-//         const vegetables = await Vegetable.find({});
-//         res.status(200).json(vegetables);
-//     } catch (err) {
-//         res.status(400).send(err);
-//     }
-// });
-
 // Index Route - GET all vegetables
 router.get('/', async (req, res) => {
     try {
@@ -64,7 +13,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-// New
+// New 
 router.get('/new', (req, res) => {
     res.render('vegetables/New');
 });

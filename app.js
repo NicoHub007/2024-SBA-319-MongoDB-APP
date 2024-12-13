@@ -82,78 +82,17 @@ app.use((req, res, next) => {
 // E - Edit     - GET       - *  UPDATE * but this a view that allows user inputs
 // S - Show     - GET       - READ - displays one of the elements
 
-// add in the meats and vegetables routes that were imported
+// add in the meats and vegetables and drinks routes that were imported
 app.use('/api/meats', meatRoutes); 
 app.use('/api/vegetables', vegetableRoutes);
 app.use('/api/drinks', drinksRoutes);
 
-//Index - GET
-app.get('/vegetables', async (req, res) => {
+app.get('/', async (req, res) => {
     try {
-        const foundVegetables = await Vegetable.find({});
-        res.status(200).render('vegetables/Index', { vegetables: foundVegetables })
-    } catch (err) {
-        res.send(err).status(400);
-    }
-})
-
-app.get('/drinks', async (req, res) => {
-    try {
-        const foundDrinks = await Drink.find({});
-        res.status(200).render('drinks/Index', { drinks: foundDrinks })
-    } catch (err) {
-        res.send(err).status(400);
-    }
-})
-
-app.get('/meats', async (req, res) => {
-    try {
-        const foundMeats = await Meat.find({});
-        res.status(200).render('meats/Index', { drinks: foundMeats })
-    } catch (err) {
-        res.send(err).status(400);
-    }
-})
-
-// N - NEW - GET  - *  CREATE * but this is a view that allows user inputs
-app.get('/meats/new', (req, res) => {
-    res.render('meats/New');
-})
-
-app.get('/drinks/new', (req, res) => {
-    res.render('drinks/New');
-})
-
-app.get('/vegetables/new', (req, res) => {
-    res.render('vegetables/New');
-});
-
-//E - EDIT - GET  - *  UPDATE * but this is a view that allows user inputs
-app.get('/meats/:id/edit', async (req, res) => {
-    try {
-        const foundMeat = await Drink.findById(req.params.id);
-        res.render('meats/Edit', { meat: foundMeat, id: req.params.id });
-    } catch (err) {
-        res.status(400).send(err);
-    }
-})
-
-// E - Edit
-app.get('/vegetables/:id/edit', async (req, res) => {
-    try {
-        const foundVegetable = await Vegetable.findById(req.params.id);
-        res.render('vegetables/Edit', { vegetable: foundVegetable, id: req.params.id });
-    } catch (err) {
-        res.status(400).send(err);
-    }
-})
-
-app.get('/drinks/:id/edit', async (req, res) => {
-    try {
-        const foundDrink = await Drink.findById(req.params.id);
-        res.render('drinks/Edit', { drink: foundDrink, id: req.params.id });
-    } catch (err) {
-        res.status(400).send(err);
+        res.render('index'); //
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server Error');
     }
 });
 
