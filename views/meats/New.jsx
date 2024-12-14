@@ -5,6 +5,7 @@ class New extends React.Component {
     render() {
         return (
             <DefaultLayout title="Add New Meat">
+                <h1>Add New Meat</h1>
                 <form action="/api/meats" method="POST">
                     Name: <input type="text" name="name" /><br />
                     Cut: <input type="text" name="cut" /><br />
